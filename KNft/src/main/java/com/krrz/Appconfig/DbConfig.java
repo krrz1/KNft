@@ -53,7 +53,7 @@ public class DbConfig extends JFinalConfig {
     }
     public void configPlugin(Plugins me) {
     	String jdbcUrlString="jdbc:mysql://localhost:3306/k_nft?serverTimezone=Asia/Shanghai&useSSL=false ";// 数据库连接
-    	DruidPlugin druidPlugin=new DruidPlugin(jdbcUrlString, "root", "18959897376");  //数据库连接插件
+    	DruidPlugin druidPlugin=new DruidPlugin(jdbcUrlString, "root", "密码");  //数据库连接插件
     	ActiveRecordPlugin activeRecordPlugin=new ActiveRecordPlugin(druidPlugin);//模型插件
     	activeRecordPlugin.setDevMode(true);
     	activeRecordPlugin.setShowSql(true);
