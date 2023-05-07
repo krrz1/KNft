@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>商品详情页面</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.5.0/css/bootstrap.min.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/css/minireset.css" />
+    <link rel="stylesheet" href="/static/css/common.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <!-- 弹框依赖-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--ajax-->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script language="JavaScript">
+        function loginOut(){
+            window.location.href='../../..';
+        }
+        function cantBuy(){
+            alert("余额不足无法购买");
+        }
+        $(document).ready(function() {
+            // 购买功能
+            $('#buy-button').on("click",function (event) {
+                event.preventDefault();
+                var balance=$('#userBalance').val();
+                var price=$('#collectionPrice').val();
+                var confirmed = confirm("确认购买吗?"+"购买后剩余金额："+(balance-price));
+                if(confirmed){
+                    var userId = $('#userId').val();
+                    var collectionId = $('#collectionId').val();
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://localhost:8080/possessionItem/buy',
+                        data: {
+                            userId: userId,
+                            collectionId: collectionId,
+                            price:price,
+                        },
+                        success: function (data) {
+                            if(data.code==200){
+                                alert("购买成功!");
+                                setTimeout(function (){
+                                    window.location.href='index';
+                                }, 10);
+                            }
+                        }, error: function () {
+                            alert("服务器内部出现错误");
+                        }
+                    });
+                }
+            });
+        });
+        //点赞功能
+        $(document).ready(function() {
+            $('#like-btn').on('click',function() {
+                var collectionId = $('#collectionId').val();
+                var likeCount=$('#collectionLikeCount').val();
+                $.ajax({
+                    url: 'http://localhost:8080/collection/like',
+                    method: 'POST',
+                    data: {
+                        collectionId:collectionId,
+                        collectionLikeCount:likeCount,
+                    },
+                    success: function(data) {
+                        if(data.code==200){
+                            // 更新点赞数
+                            $('#like-count').text(data.data);
+                            $('#collectionLikeCount').val(data.data);
+                        }
+                    },
+                    error: function() {
+                        alert('点赞失败，请稍后再试！');
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        /* 样式表 */
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        .product {
+            width: 35%;
+            height: 50%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            position: relative;
+            padding-bottom: 75%;
+        }
+        .product-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .product-details {
+            padding: 20px;
+        }
+        .product-title {
+            font-size: 24px;
+            margin: 0 0 10px 0;
+        }
+        .product-description {
+            font-size: 16px;
+            color: #555;
+            margin: 0 0 20px 0;
+        }
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+        .add-to-cart-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #0069d9;
+        }
+        footer {
+            background-color: #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- 导航栏 -->
+#include("/view/common/head.html")
+<main>
+    <div class="product">
+        <div class="product-image">
+            <img src="/static/upload/#(collection.collectionImg)" alt="商品图片">
+        </div>
+        <div class="product-details">
+            <input type="hidden" id="userId" value="#(session.currUser.id)">
+            <input type="hidden" id="userBalance" value="#(session.currUser.balance)">
+            <input type="hidden" id="collectionId" value="#(collection.id)">
+            <input type="hidden" id="collectionPrice" value="#(collection.price)">
+            <input type="hidden" id="collectionLikeCount" value="#(collection.likeCount)">
+            <h1 class="product-title">藏品名：#(collection.collectionName)</h1>
+            <p class="product-description">卖家：#(collection.sellers)</p>
+            <p class="product-price">价格：$#(collection.price)</p>
+            #if(session.currUser.balance >= collection.price)
+            <button id="buy-button" class="btn btn-primary">购买</button>
+            #end
+            #if(session.currUser.balance < collection.price)
+            <button class="btn btn-primary" onclick="cantBuy()">购买</button>
+            #end
+            <button id="like-btn" onclick="" class="btn btn-primary" type="button" style="background-color: #395598">
+                <span id="like-count">#(collection.likeCount)</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+            </svg>
+            </button>
+            <button type="button" onclick="window.location.href='index'" style="margin-left: 55%;background-color:#b0b0b0" class="btn btn-primary">
+                返回
+            </button>
+        </div>
+    </div>
+</main>
+<footer>
+    <p>©krrz</p>
+</footer>
+</body>
+</html>

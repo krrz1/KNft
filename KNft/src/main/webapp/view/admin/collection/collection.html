@@ -1,0 +1,179 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collections Management</title>
+    <!-- 引入Bootstrap CSS文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/minireset.css" />
+    <link rel="stylesheet" href="/static/css/common.css" />
+    <link rel="stylesheet" href="/static/css/cart.css" />
+    <link rel="stylesheet" href="/static/css/bookManger.css" />
+    <!-- 弹框依赖-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--ajax-->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        // function edit(id,collectionName,price,sellers,likeCount){
+        //     window.location.href='/admin/collection/editPage?id='+id+'&collectionName='+collectionName+'&price='+price+'&sellers='+sellers+'&likeCount='+likeCount;
+        // }
+        function del(id){
+            var confirmed = confirm("确认删除吗?");
+            if(confirmed){
+                window.location.href='/admin/collection/del?id='+id;
+            }
+        }
+        function loginOut(){
+            var confirmed = confirm("确认注销吗?");
+            if(confirmed){
+                window.location.href='/admin/';
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">KNFT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="/collection/collection">系统后台藏品管理</a>
+            </li>
+        </ul>
+    </div>
+    <button onclick="loginOut()" class="btn btn-primary" style="background-color: #a8a8a8">注销</button>
+    &nbsp;&nbsp;&nbsp;
+    <div>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <span style="color: #ffffff">欢迎你&nbsp;#(session.currUser.uname)&nbsp;管理员</span>
+            </li>
+        </ul>
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <div style="width: 40px;" data-v-d16d6306="" class="avatar-wrapper el-dropdown-selfdefine" aria-haspopup="list" aria-controls="dropdown-menu-8176" role="button" tabindex="0"><img data-v-d16d6306="" src="https://ts1.cn.mm.bing.net/th/id/R-C.9915857634fa9ddb94784d30074806f6?rik=KHJnVcMZysODuQ&riu=http%3a%2f%2fwww.gx8899.com%2fuploads%2fallimg%2f160914%2f3-160914160220-52.gif&ehk=oJDWoKk5Lr5Kkh9BZk1%2bultvonX71vvr%2bsQniKzrXwQ%3d&risl=&pid=ImgRaw&r=0" class="user-avatar"><i data-v-d16d6306="" class="el-icon-caret-bottom"></i></div>
+</nav>
+<div class="list">
+    <div class="w">
+        <div class="add">
+            <button type="button" style="background-color: #395598" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                添加藏品
+            </button><br>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">添加数字藏品  Add Collection</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="add-form" enctype="multipart/form-data" action="/admin/collection/add" method="post">
+                                <div class="form-group">
+                                    <label>图片</label>
+                                    <input name="collectionImg" type="file" class="form-control" placeholder="Enter collection Img">
+                                </div>
+                                <div class="form-group">
+                                    <label>藏品名</label>
+                                    <input name="collectionName" type="text" class="form-control" placeholder="Enter collection name">
+                                </div>
+                                <div class="form-group">
+                                    <label>价格</label>
+                                    <input name="price" type="number" class="form-control" placeholder="Enter collection price">
+                                </div>
+                                <div class="form-group">
+                                    <label>卖家</label>
+                                    <input name="sellers" type="text" class="form-control" placeholder="Enter collection Sellers">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            藏品名：<form action="">
+            <input type="text" name="keyword" value="#(keyword)"/><input type="submit" value="查询藏品">
+            <a href="/admin/collection/index">重置</a>
+            </form>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>图片</th>
+                <th>藏品名称</th>
+                <th>价格</th>
+                <th>卖家</th>
+                <th>点赞数</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+                    #for(collection : page.list)
+                        <tr data-item-id="#(collection.id)">
+                            <td data-column-name="collectionImg">
+                               <img src="/static/upload/#(collection.collectionImg)"/>
+                            </td>
+                            <td data-column-name="collectionName">
+                                #(collection.collectionName)
+                            </td>
+                            <td data-column-name="price">
+                                #(collection.price)
+                            </td>
+                            <td data-column-name="sellers">
+                                #(collection.sellers)
+                            </td>
+                            <td>
+                                #(collection.likeCount)
+                            </td>
+                            <td>
+                                <form action="/admin/collection/editPage" method="post">
+<!--                                    <button onclick="edit(#(collection.id),#(collection.collectionName),#(collection.price),#(collection.sellers),#(collection.likeCount))" class="btn btn-primary" type="button" style="background-color: #395598">-->
+<!--                                        修改-->
+<!--                                    </button>-->
+                                    <input type="hidden" name="id" value="#(collection.id)">
+                                    <input type="hidden" name="collectionName" value="#(collection.collectionName)">
+                                    <input type="hidden" name="price" value="#(collection.price)">
+                                    <input type="hidden" name="sellers" value="#(collection.sellers)">
+                                    <input type="hidden" name="likeCount" value="#(collection.likeCount)">
+                                    <button class="btn btn-primary" type="submit" style="background-color: #395598">
+                                        修改
+                                    </button>
+                                </form>
+
+                                <button onclick="del(#(collection.id))" class="btn btn-primary" type="button" style="background-color: #395598">
+                                    删除
+                                </button>
+                            </td>
+                        </tr>
+                    #end
+            </tbody>
+        </table>
+        <div class="footer">
+            <div class="footer-right">
+                <ul>
+                    #include("/view/common/_paginate.html")
+                    #@paginate(page.pageNumber,page.totalPage,"/admin/collection",keyword)
+                </ul>
+                <span>共#(page.totalPage)页</span>
+                <span>#(page.totalRow)条记录</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

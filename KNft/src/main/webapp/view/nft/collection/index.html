@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理页面</title>
+    <!-- 引入Bootstrap CSS文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/minireset.css" />
+    <link rel="stylesheet" href="/static/css/common.css" />
+    <link rel="stylesheet" href="/static/css/iconfont.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
+    <!-- 弹框依赖-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--ajax-->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function loginOut(){
+            window.location.href='/';
+        }
+        $(document).ready(function() {
+            // 购买功能
+            $('#Recharge-form').on("submit",function (event) {
+                event.preventDefault();
+                var userBalance=$('#userBalance').val();
+                var userId=$('#userId').val();
+                var addNumber=$('#addNumber').val();
+                if(addNumber<=0){
+                    alert("充值金额不能小于等于0");
+                }else{
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://localhost:8080/user/recharge',
+                        data: {
+                            userId: userId,
+                            userBalance: userBalance,
+                            addNumber:addNumber,
+                        },
+                        success: function (data) {
+                            if(data.code==200){
+                                alert("充值成功!");
+                                $('#TopUserBalance').text(data.data+".0");
+
+                            }else{
+                                alert("充值失败");
+                            }
+                        }, error: function () {
+                            alert("服务器内部出现错误");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">KNFT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/collection/index">首页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/possessionItem/index">个人仓库</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/bill/index">交易记录</a>
+            </li>
+        </ul>
+    </div>
+    <button onclick="loginOut()" class="btn btn-primary" style="background-color: #a8a8a8">注销</button>
+    &nbsp;&nbsp;&nbsp;
+    <button type="button" data-toggle="modal" data-target="#RechargeModal" class="btn btn-primary" style="background-color: #395598">充值</button>
+    &nbsp;&nbsp;&nbsp;
+    <!-- Modal -->
+    <div class="modal fade" id="RechargeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">充值 Recharge</h5>
+                    <button id="closeButton" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="Recharge-form" enctype="multipart/form-data" action="add" method="post">
+                        <div class="form-group">
+                            <label>充值金额</label>
+                            <input id="addNumber" name="sellers" type="number" class="form-control" placeholder="请输入充值金额">
+                        </div>
+                        <input id="userId" type="hidden" value="#(session.currUser.id)">
+                        <input id="userBalance" type="hidden" value="#(session.currUser.balance)">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <span style="color: #ffffff">欢迎你&nbsp;#(session.currUser.uname)&nbsp;,当前余额：$ <span id="TopUserBalance">#(session.currUser.balance)</span>&nbsp;&nbsp;</span>
+            </li>
+        </ul>
+    </div>
+    <div style="width: 40px;" data-v-d16d6306="" class="avatar-wrapper el-dropdown-selfdefine" aria-haspopup="list" aria-controls="dropdown-menu-8176" role="button" tabindex="0"><img data-v-d16d6306="" src="https://ts1.cn.mm.bing.net/th/id/R-C.9915857634fa9ddb94784d30074806f6?rik=KHJnVcMZysODuQ&riu=http%3a%2f%2fwww.gx8899.com%2fuploads%2fallimg%2f160914%2f3-160914160220-52.gif&ehk=oJDWoKk5Lr5Kkh9BZk1%2bultvonX71vvr%2bsQniKzrXwQ%3d&risl=&pid=ImgRaw&r=0" class="user-avatar"><i data-v-d16d6306="" class="el-icon-caret-bottom"></i></div>
+
+</nav>
+<div class="books-list" >
+    <div class="w">
+        <div class="list">
+            <div class="list-header">
+                <div class="title">数字藏品列表</div>
+            </div>
+            <div id="posts" class="list-content">
+                #for(collection:collections)
+                <div class="list-item">
+                    <input class="post-id" type="hidden" value="#(collection.id)">
+                    <img src="/static/upload/#(collection.collectionImg)">
+                    <p>藏品名:#(collection.collectionName)</p>
+                    <p>卖家:#(collection.sellers)</p>
+                    <p>价格:￥#(collection.price)</p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16"><path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/></svg><span id="like-count">#(collection.likeCount)</span>
+                    </p>
+                    <button id="like-btn" onclick="window.location.href='detail?id=#(collection.id)'" class="btn btn-primary" type="button" style="background-color: #395598">购买</button>
+                </div>
+                #end
+            </div>
+        </div>
+    </div>
+    <h1> </h1>
+    <span style="margin-left: 50%;color: #cccccc" >@krrz</span>
+    <!-- 引入Bootstrap JavaScript文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

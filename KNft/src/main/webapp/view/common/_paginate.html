@@ -1,0 +1,50 @@
+#define paginate(currentPage, totalPage, link , keyword)
+	#if(page.totalPage <= 0 || currentPage > page.totalPage) #return #end
+	#setLocal(startPage = currentPage - 4)
+	#if (startPage < 1) #setLocal(startPage = 1) #end
+	
+	#setLocal(endPage = currentPage + 4)
+	#if (endPage > totalPage) #setLocal(endPage = totalPage) #end
+	
+	<div class="pagination">
+			#if (currentPage <= 8)
+				#setLocal(startPage = 1)
+			#end
+			#if ((totalPage - currentPage) < 8)
+				#setLocal(endPage = totalPage)
+			#end
+			
+			#if (currentPage == 1)
+				<span class="disabled prev_page">上一页</span>
+			#else
+				<a href="#(link)?pageNum=#(currentPage - 1)&keyword=#(keyword)" class="prev_page">上一页</a>
+			#end
+			
+			#if (currentPage > 8)
+				<a href="#(link)?pageNum=#(1)&keyword=#(keyword)">#(1)</a>
+				<a href="#(link)?pageNum=#(2)&keyword=#(keyword)">#(2)</a>
+				<span class="gap">…</span>
+			#end
+			
+			#for(i : [startPage..endPage])
+				#if (currentPage == i)
+					<span class="current">#(i)</span>
+				#else
+					<a href="#(link)?pageNum=#(i)&keyword=#(keyword)">#(i)</a>
+				#end
+			#end
+			
+			#if ((totalPage - currentPage) >= 8)
+				<span class="gap">…</span>
+				<a href="#(link)?pageNum=#(totalPage - 1)&keyword=#(keyword)">#(totalPage - 1)</a>
+				<a href="#(link)?pageNum=#(totalPage)&keyword=#(keyword)">#(totalPage)</a>
+			#end
+
+
+			#if (currentPage == totalPage)
+				<span class="disabled next_page">下一页</span>
+			#else
+				<a href="#(link)?pageNum=#(currentPage + 1)&keyword=#(keyword)" class="next_page" rel="next">下一页</a>
+			#end
+	</div>
+#end

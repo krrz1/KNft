@@ -1,0 +1,87 @@
+.header-right a {
+  font-size: 20px;
+  color: #39987c;
+}
+.list input {
+  text-align: center;
+}
+.list .add {
+  padding: 10px 0;
+}
+.list .add a {
+  width: 80px;
+  height: 30px;
+  background-color: #395598;
+  color: #fff;
+  border: none;
+  outline: none;
+  text-align: center;
+  line-height: 30px;
+}
+.list table th {
+  height: 40px !important;
+}
+.list table td {
+  padding: 5px 0 !important;
+}
+.list table td img {
+  width: 60px !important;
+  height: 60px !important;
+}
+.list table td a {
+  display: inline;
+  color: #39987c;
+}
+.list table td .del {
+  margin-left: 10px;
+  color: red;
+}
+.list .footer {
+  margin-top: 3px !important;
+  justify-content: flex-end !important;
+}
+.list .footer-right {
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #666;
+  font-size: 20px;
+}
+.list .footer-right div {
+  margin: 0 5px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.list .footer-right span {
+  margin: 0 5px !important;
+  font-size: 20px !important;
+  color: #666 !important;
+}
+.list .footer-right ul li {
+  float: left;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.list .footer-right ul li:nth-child(n + 2) {
+  margin-left: 10px;
+}
+.list .footer-right ul li.active {
+  font-weight: 700;
+  color: #39987c;
+  font-size: 24px;
+}
+.list .footer-right input {
+  width: 40px;
+  height: 30px;
+}
+.list .footer-right button {
+  width: 60px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: #39987c;
+  color: #fff;
+  margin-left: 10px;
+  cursor: pointer;
+}

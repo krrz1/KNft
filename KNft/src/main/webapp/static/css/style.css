@@ -1,0 +1,360 @@
+﻿@charset "UTF-8";
+
+body {
+  overflow: hidden;
+}
+input {
+  outline: none;
+  /* text-align: center; */
+}
+
+* {
+  margin: 0;
+  font-family: 'Microsoft Yahei';
+  /* color: #666; */
+}
+
+div {
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.cont {
+  margin-left: 20px;
+}
+#header {
+  height: 82px;
+  width: 1200px;
+}
+
+#main {
+  height: 460px;
+  width: 1200px;
+  border: 1px black solid;
+  overflow: auto;
+}
+
+#bottom {
+  height: 30px;
+  width: 1200px;
+  text-align: center;
+}
+
+#book {
+  width: 100%;
+  height: 90%;
+  margin: auto;
+}
+
+.b_list {
+  height: 300px;
+  width: 250px;
+  margin: 20px;
+  float: left;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 1px #e3e3e3 solid;
+}
+
+#page_nav {
+  width: 100%;
+  height: 10px;
+  margin: auto;
+
+  text-align: center;
+}
+
+#pn_input {
+  width: 30px;
+  text-align: center;
+}
+
+.img_div {
+  height: 150px;
+  text-align: center;
+}
+
+.book_img {
+  height: 150px;
+  width: 150px;
+}
+
+.book_info {
+  text-align: center;
+}
+
+.book_info div {
+  height: 10px;
+  width: 300px;
+  text-align: left;
+}
+
+.wel_word {
+  font-size: 60px;
+  float: left;
+}
+
+.logo_img {
+  float: left;
+}
+
+#header div a {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#header div {
+  float: right;
+  margin-top: 55px;
+}
+
+.book_cond {
+  margin-left: 903px;
+}
+.book_cond .sp1 {
+  color: red;
+}
+
+.book_cond input {
+  width: 50px;
+  text-align: center;
+}
+
+/*登录页面CSS样式  */
+
+#login_header {
+  height: 82px;
+  width: 1200px;
+}
+
+.login_banner {
+  height: 475px;
+  background-color: antiquewhite;
+}
+
+.login_form {
+  height: 310px;
+  width: 406px;
+  float: right;
+  margin-right: 50px;
+  margin-top: 50px;
+  background-color: #fff;
+}
+
+#content {
+  height: 475px;
+  width: 1200px;
+}
+
+.login_box {
+  margin: 20px;
+  height: 260px;
+  /* width: 366px; */
+}
+
+h1 {
+  font-size: 20px;
+}
+.msg_cont {
+  background: none repeat scroll 0 0 #fff6d2;
+  border: 1px solid #ffe57d;
+  color: #666;
+  height: 18px;
+  line-height: 18px;
+  padding: 3px 10px 3px 40px;
+  position: relative;
+  border: none;
+}
+
+.msg_cont b {
+  background: url('../img/pwd-icons-new.png') no-repeat scroll -104px -22px
+    rgba(0, 0, 0, 0);
+  display: block;
+  height: 17px;
+  left: 10px;
+  margin-top: -8px;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  width: 16px;
+}
+
+.form .itxt {
+  /* width: 100px; */
+  border: 0 none;
+  float: none;
+  font-family: '宋体';
+  font-size: 14px;
+  height: 18px;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 10px 0 10px 10px;
+  width: 250px;
+  border: 1px #e3e3e3 solid;
+}
+.inp {
+  margin-left: 15px;
+}
+#sub_btn {
+  background-color: #39987c;
+  border: none;
+  color: #fff;
+  width: 360px;
+  height: 40px;
+}
+
+#l_content {
+  float: left;
+  margin-top: 150px;
+  margin-left: 300px;
+}
+
+#l_content span {
+  font-size: 60px;
+  color: white;
+}
+
+.tit h1 {
+  width: 100%;
+  text-align: center;
+  float: left;
+  /* margin-top: 5px; */
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #39987c;
+}
+
+.tit a {
+  float: right;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: red;
+  text-decoration: none;
+}
+
+.tit .errorMsg {
+  float: right;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: red;
+}
+
+.tit {
+  height: 30px;
+}
+.tit a {
+  color: #39987c;
+}
+/*购物车*/
+#main table {
+  margin: auto;
+  margin-top: 80px;
+  border-collapse: collapse;
+}
+
+#main table td {
+  width: 120px;
+  text-align: center;
+  border-bottom: 1px #e3e3e3 solid;
+  padding: 10px;
+}
+
+.cart_info {
+  width: 700px;
+  text-align: right;
+}
+/*优化购物车超链接*/
+.cart_info a {
+  text-decoration: none;
+}
+/* .cart_info cart_span a{ */
+/* 	padding: 10px 0; */
+/* 	display: block; */
+/* 	background-color: #07c160; */
+/* 	color: #fff!important; */
+/* 	border: 1px solid #07c160; */
+/* 	border-radius: 2px; */
+/* } */
+
+.cart_span {
+  margin-left: 15px;
+}
+
+.cart_span span {
+  color: red;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.cart_span a,
+td a {
+  font-size: 20px;
+  color: blue;
+}
+
+#header div span {
+  margin: 10px;
+}
+
+#header div .um_span {
+  color: red;
+  font-size: 25px;
+  margin: 10px;
+}
+
+#header div a {
+  color: blue;
+}
+#header .user {
+  margin-right: 35px;
+}
+
+/* 图书管理 */
+
+#main.box_no {
+  /* 	border: 0; */
+}
+#main.box_no table td {
+  width: 120px;
+  text-align: center;
+  border: 1px #e3e3e3 solid;
+  padding: 10px;
+}
+#main.box_no table td > a {
+  text-decoration: none;
+}
+#main.box_no table td .a_green {
+  color: #07c160;
+}
+#main.box_no table tr:last-child td {
+  border: 0;
+}
+#main.box_no table tr:last-child td > a {
+  padding: 6px 0;
+  display: block;
+  background-color: #07c160;
+  color: #fff !important;
+  border: 1px solid #07c160;
+  border-radius: 2px;
+}
+#main.box_no table tr td:last-child a {
+  color: red;
+}
+
+/*订单列表*/
+
+#main.box_order table td {
+  width: 120px;
+  text-align: center;
+  border: 1px #e3e3e3 solid;
+  padding: 10px;
+}
+#main.box_order table tr:first {
+  font-weight: bolder;
+}
+#main.box_order table td > a {
+  text-decoration: none;
+}
+#main.box_order table td .a_green {
+  color: #07c160;
+}

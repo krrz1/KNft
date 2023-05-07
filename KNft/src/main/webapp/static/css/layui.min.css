@@ -1,0 +1,42 @@
+.layui-header {
+    height: 60px;
+    line-height: 60px;
+    background-color: #393D49;
+    color: #fff;
+  }
+  .layui-header .layui-logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .layui-header .layui-nav {
+    float: right;
+  }
+  .layui-side {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    bottom: 0;
+    width: 200px;
+    background-color: #393D49;
+  }
+  .layui-side .layui-nav {
+    margin-top: 20px;
+  }
+  .layui-body {
+    margin: 80px 0;
+  }
+  .layui-card {
+    margin-top: 20px;
+  }
+  .layui-card-header {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #E6E6E6;
+  }
+  .layui-card-body {
+    padding: 10px;
+  }
+  .layui-card-text {
+    margin-bottom: 10px;
+  }

@@ -1,0 +1,217 @@
+.header {
+  height: 100px;
+  border-bottom: 2px solid #39987c;
+}
+.header .w {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.header .w .header-left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.header .w .header-left img {
+  width: 200px;
+  height: 62px;
+}
+.header .w .header-left h1 {
+  font-size: 30px;
+  margin-left: 30px;
+}
+.header .w .header-left span {
+  font-size: 30px;
+  margin-left: 30px;
+}
+.header .w .header-right {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.header .w .header-right h3 {
+  font-size: 20px;
+  margin-right: 10px;
+}
+.header .w .header-right h3 span {
+  color: red;
+  margin: 0 5px;
+}
+.header .w .header-right div {
+  font-size: 20px;
+  color: #39987c;
+  cursor: pointer;
+}
+.header .w .header-right div a {
+  font-size: 20px;
+  color: #39987c;
+}
+.header .w .header-right div:hover {
+  color: skyblue;
+}
+.header .w .header-right .destory {
+  margin: 0 10px;
+}
+.list {
+  background-color: #f5f5f5;
+  padding: 20px 0;
+}
+.list .w table {
+  background-color: #fff;
+  width: 100%;
+}
+.list .w table thead {
+  border-bottom: 1px solid #ccc;
+}
+.list .w table thead th {
+  height: 70px;
+  text-align: center;
+}
+.list .w table thead th input {
+  margin: 0 10px;
+}
+.list .w table tbody tr {
+  border-bottom: 1px solid #eee;
+  height: 100%;
+}
+.list .w table tbody tr td {
+  height: 100%;
+  padding: 10px 0;
+  text-align: center;
+}
+.list .w table tbody tr td img {
+  width: 80px;
+  height: 80px;
+}
+.list .w table tbody tr td:nth-child(2) {
+  padding: 0 20px;
+  width: 300px;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.list .w table tbody tr td:nth-child(3) {
+  height: 100%;
+}
+.list .w table tbody tr td:nth-child(3) .count {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ccc;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+.list .w table tbody tr td:nth-child(3) .count-num {
+  margin: 0 10px;
+  display: inline-block;
+  width: 40px;
+  height: 25px;
+  text-align: center;
+}
+.list .w .footer {
+  height: 50px;
+  background-color: #fff;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list .w .footer-left {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  color: #39987c;
+  font-size: 20px;
+  cursor: pointer;
+}
+.list .w .footer-left .clear-cart {
+  margin-right: 20px;
+}
+.list .w .footer-left a {
+  color: #39987c;
+}
+.list .w .footer-left a:hover {
+  color: skyblue;
+}
+/*.list .w .footer-left div:hover {*/
+/*  color: skyblue;*/
+/*}*/
+.list .w .footer-right {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.list .w .footer-right .total-price {
+  margin-left: 20px;
+}
+.list .w .footer-right span {
+  color: red;
+  font-size: 24px;
+  margin: 0 10px;
+}
+.list .w .footer-right .pay {
+  height: 50px;
+  line-height: 50px;
+  background-color: #39987c;
+  color: #fff;
+  padding: 0 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.list .w .footer-right .pay:hover {
+  background-color: red;
+}
+.bottom {
+  opacity: 0.6;
+  background-color: #323232;
+  margin-top: 10px;
+  color: #fff;
+  text-align: center;
+}
+.bottom .top {
+  height: 100px;
+  border-bottom: 1px solid #474747;
+}
+.bottom .top ul {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+}
+.bottom .top ul li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.bottom .top ul li a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.bottom .top ul li a span {
+  margin-left: 10px;
+}
+.bottom .content {
+  height: 100px;
+  display: flex;
+  padding-top: 25px;
+  justify-content: center;
+  cursor: pointer;
+}
+.bottom .content dl {
+  width: 180px;
+}
+.bottom .content dl dt {
+  font-size: 20px;
+}
+.bottom .content dl dd {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #a8a8a8;
+}
+.bottom .down {
+  height: 40px;
+  background-color: #2a2a2a;
+  line-height: 40px;
+}
