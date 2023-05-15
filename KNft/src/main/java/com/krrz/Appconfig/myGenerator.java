@@ -10,7 +10,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 public class myGenerator {
 	public static DataSource getDataSource(){
 		String jdbcUrlString="jdbc:mysql://localhost:3306/k_nft?serverTimezone=UTC&userSSL=false ";// 数据库连接
-    	DruidPlugin druidPlugin=new DruidPlugin(jdbcUrlString, "root", "18959897376");  //数据库连接插件
+    	DruidPlugin druidPlugin=new DruidPlugin(jdbcUrlString, "root", "密码");  //数据库连接插件
     	druidPlugin.start();
     	return druidPlugin.getDataSource();
 	}
