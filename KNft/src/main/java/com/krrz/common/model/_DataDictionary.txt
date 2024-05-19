@@ -1,0 +1,45 @@
+Table: bill
+--------------+--------------+------+-----+---------+---------
+ Field        | Type         | Null | Key | Default | Remarks 
+--------------+--------------+------+-----+---------+---------
+ id           | INT(10)      | NO   | PRI |         |         
+ user         | INT(10)      | YES  |     |         |         
+ checkOutTime | DATETIME(19) | YES  |     |         |         
+ totalMoney   | DOUBLE(20,2) | YES  |     |         |         
+--------------+--------------+------+-----+---------+---------
+
+Table: collection
+----------------+--------------+------+-----+---------+---------
+ Field          | Type         | Null | Key | Default | Remarks 
+----------------+--------------+------+-----+---------+---------
+ id             | INT(10)      | NO   | PRI |         |         
+ collectionImg  | VARCHAR(255) | NO   |     |         |         
+ collectionName | VARCHAR(255) | YES  |     |         |         
+ price          | DOUBLE(10,2) | YES  |     |         |         
+ sellers        | VARCHAR(255) | YES  |     |         |         
+ status         | INT(10)      | NO   |     | 0       |         
+ likeCount      | INT(10)      | NO   |     | 0       |         
+----------------+--------------+------+-----+---------+---------
+
+Table: possession_item
+------------+---------+------+-----+---------+---------
+ Field      | Type    | Null | Key | Default | Remarks 
+------------+---------+------+-----+---------+---------
+ id         | INT(10) | NO   | PRI |         |         
+ collection | INT(10) | YES  |     |         |         
+ count      | INT(10) | YES  |     |         |         
+ user       | INT(10) | YES  |     |         |         
+------------+---------+------+-----+---------+---------
+
+Table: user
+---------+--------------+------+-----+---------+---------
+ Field   | Type         | Null | Key | Default | Remarks 
+---------+--------------+------+-----+---------+---------
+ id      | INT(10)      | NO   | PRI |         |         
+ uname   | VARCHAR(255) | NO   |     |         |         
+ pwd     | VARCHAR(255) | NO   |     |         |         
+ email   | VARCHAR(255) | YES  |     |         |         
+ role    | INT(10)      | YES  |     | 0       |         
+ balance | DOUBLE(15,2) | YES  |     | 0.00    |         
+---------+--------------+------+-----+---------+---------
+

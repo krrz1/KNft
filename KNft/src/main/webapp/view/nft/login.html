@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.5.0/css/bootstrap.min.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script>
+        function regitser(){
+            window.location.href='registerPage';
+        };
+        // $(document).ready(function() {
+        //     // 登录功能
+        //     $('#login-form').on("submit",function (event) {
+        //         event.preventDefault();
+        //         var uname = $('#uname').val();
+        //         var pwd = $('#pwd').val();
+        //         $.ajax({
+        //             type: 'POST',
+        //             url: 'http://localhost:8080/login',
+        //             data: {
+        //                 uname: uname,
+        //                 pwd: pwd,
+        //             },
+        //             success: function (data) {
+        //                 if(data.code==200){
+        //                     alert("登录成功!");
+        //                     setTimeout("loginSuccess()", 10);
+        //                 }else if(data.code==505){
+        //                     alert("账号或密码错误！");
+        //                 }
+        //             }, error: function () {
+        //             alert("服务器内部出现错误");
+        //         }
+        //         });
+        //     });
+        // });
+    </script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 400px;
+            margin-left: 20%;
+            padding: 50px 15px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+        }
+
+        .card-header {
+            background-color: #fff;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .card-body {
+                background-color: #fff;
+            padding: 30px;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 500;
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 0;
+            border-bottom: 2px solid #ccc;
+            background-color: #f8f9fa;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-bottom-color: #007bff;
+            box-shadow: none;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 0;
+            background-color: #ccc;
+            border: none;
+            transition: all .3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #00c2cc;
+            transform: translateY(-2px);
+        }
+
+        .btn:focus {
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body style="background:url('/static/img/das1.jpg') no-repeat;background-size:120% 163%;">
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 >登录</h2>
+        </div>
+        <div class="card-body">
+<!--            <form id="login-form" method="post" action="/login">-->
+            <form action="login" method="post">
+                <div class="form-group" style="margin-left: 10%;">
+                    <label for="uname">用户名</label>
+                    <input type="text" size="30" class="form-control" id="uname" name="uname" value="#(uname)">
+                    <span style="color:red">#(unameMsg)</span>
+                </div>
+                <div class="form-group" style="margin-left: 10%;">
+                    <label for="pwd">密码</label>
+                    <input type="password" size="30" class="form-control" id="pwd" name="pwd" >
+                    <span style="color:red">#(pwdMsg)</span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" style="margin-left: 15%;">登录</button>
+                <button onclick="regitser()" type="button" class="btn btn-primary btn-block" style="margin-left: 10%;">注册</button>
+                <a href="/admin/" style="margin-left: 5%;">后台登录</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

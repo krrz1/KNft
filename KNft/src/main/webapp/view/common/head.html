@@ -1,0 +1,31 @@
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">KNFT</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+			<li class="nav-item active">
+				<a class="nav-link" href="/collection/index">首页</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/possessionItem/index">个人仓库</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/bill/index">交易记录</a>
+			</li>
+		</ul>
+	</div>
+	<button onclick="loginOut()" class="btn btn-primary" style="background-color: #a8a8a8">注销</button>
+	&nbsp;&nbsp;&nbsp;
+	<div>
+		<ul class="navbar-nav">
+			<li class="nav-item active">
+				<span style="color: #ffffff">欢迎你&nbsp;#(session.currUser.uname)&nbsp;,当前余额：$ #(session.currUser.balance)&nbsp;&nbsp;</span>
+			</li>
+		</ul>
+	</div>
+	<div style="width: 40px;" data-v-d16d6306="" class="avatar-wrapper el-dropdown-selfdefine" aria-haspopup="list" aria-controls="dropdown-menu-8176" role="button" tabindex="0"><img data-v-d16d6306="" src="https://ts1.cn.mm.bing.net/th/id/R-C.9915857634fa9ddb94784d30074806f6?rik=KHJnVcMZysODuQ&riu=http%3a%2f%2fwww.gx8899.com%2fuploads%2fallimg%2f160914%2f3-160914160220-52.gif&ehk=oJDWoKk5Lr5Kkh9BZk1%2bultvonX71vvr%2bsQniKzrXwQ%3d&risl=&pid=ImgRaw&r=0" class="user-avatar"><i data-v-d16d6306="" class="el-icon-caret-bottom"></i></div>
+
+</nav>
